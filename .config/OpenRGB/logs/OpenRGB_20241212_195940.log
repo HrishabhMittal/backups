@@ -1,0 +1,31 @@
+    OpenRGB v0.9
+    Commit:  from 
+    Launched: 20241212_195940
+====================================================================================================
+
+1003  |Info:    Saving detector settings
+1005  |Info:    ------------------------------------------------------
+1005  |Info:    |               Start device detection               |
+1005  |Info:    ------------------------------------------------------
+1005  |Info:    Initializing HID interfaces: Success
+1012  |Info:    ------------------------------------------------------
+1012  |Info:    |             Detecting I2C interfaces               |
+1012  |Info:    ------------------------------------------------------
+1012  |Info:    Registering I2C interface: /dev/i2c-3 Device 10DE:25EC Subsystem: 17AA:3D06
+1012  |Info:    Registering I2C interface: /dev/i2c-1 Device 10DE:25EC Subsystem: 17AA:3D06
+1012  |Info:    Registering I2C interface: /dev/i2c-17 Device 0000:0000 Subsystem: 0000:0000
+1012  |Warning: [i2c_smbus_linux] Failed to read i2c device PCI device ID
+1013  |Info:    Registering I2C interface: /dev/i2c-15 Device 0000:0000 Subsystem: 0000:0000
+1013  |Warning: [i2c_smbus_linux] Failed to read i2c device PCI device ID
+1013  |Info:    Registering I2C interface: /dev/i2c-13 Device 0000:0000 Subsystem: 0000:0000
+1013  |Info:    Registering I2C interface: /dev/i2c-11 Device 8086:A78B Subsystem: 17AA:3D06
+1013  |Info:    Registering I2C interface: /dev/i2c-0 Device 10DE:25EC Subsystem: 17AA:3D06
+1013  |Info:    Registering I2C interface: /dev/i2c-9 Device 8086:A78B Subsystem: 17AA:3D06
+1013  |Info:    Registering I2C interface: /dev/i2c-7 Device 8086:A78B Subsystem: 17AA:3D06
+1013  |Info:    Registering I2C interface: /dev/i2c-5 Device 8086:A78B Subsystem: 17AA:3D06
+1013  |Info:    ------------------------------------------------------
+1013  |Info:    |               Detecting I2C devices                |
+1013  |Info:    ------------------------------------------------------
+1024  |Info:    ------------------------------------------------------
+1024  |Info:    |               Detecting I2C PCI devices            |
+1024  |Info:    ------------------------------------------------------
