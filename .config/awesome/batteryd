@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 while true; do
     $HOME/.config/awesome/battery.sh
     sleep 10

@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 get_desktops() {    
     awesome-client 'tags = screen[mouse.screen].tags; names = {}; for _, tag in ipairs(tags) do table.insert(names, tag.name) end; return table.concat(names, " ")' | sed 's/^ *string "//' | sed 's/"$//'
 }
 get_active_tag() {
-    awesome-client 'return client.focus and client.focus.screen.selected_tag.name or ""' | sed 's/^ *string "//' | sed 's/"$//'  
+    awesome-client 'return screen[mouse.screen].selected_tag and screen[mouse.screen].selected_tag.name or ""' | sed 's/^ *string "//' | sed 's/"$//'  
 }
 format_desktops() {
     local desktops=$(get_desktops)
@@ -139,17 +139,22 @@ mute() {
     amixer sset Master toggle
 }
 get_battery_icon() {
-    BATTERY_PERCENT=$(upower -i $(upower -e | grep battery) | grep percentage | awk '{print $2}' | sed 's/%//')
+    CHARGING="$(upower -i $(upower -e | grep bat) | grep state | awk  '{ print $2 }')"
+    SYM=""
+    if [[ "$CHARGING" == "charging" ]]; then
+        SYM=""
+    fi
+    BATTERY_PERCENT="$(upower -i $(upower -e | grep battery) | grep percentage | awk '{print $2}' | sed 's/%//')"
     if [ "$BATTERY_PERCENT" -ge 80 ]; then
-        echo ""
+        echo "$SYM"
     elif [ "$BATTERY_PERCENT" -ge 60 ]; then
-        echo ""
+        echo "$SYM"
     elif [ "$BATTERY_PERCENT" -ge 40 ]; then
-        echo ""
+        echo "$SYM"
     elif [ "$BATTERY_PERCENT" -ge 20 ]; then
-        echo ""
+        echo "$SYM"
     else
-        echo ""
+        echo "$SYM"
     fi
 }
 
@@ -186,10 +191,29 @@ get_display_width() {
     }
     END { print w }'
 }
+manage() {
+    while read -r line; do 
+        if [[ "$line" == "bluetooth" ]]; then
+            blueman-manager &
+        elif [[ "$line" == "sys" ]]; then
+            alacritty -e btop &
+        elif [[ "$line" == "vol" ]]; then
+            sound &
+        elif [[ "$line" == "bright" ]]; then
+            bright &
+        elif [[ "$line" == "clock" ]]; then
+            alacritty -e tty-clock &
+        elif [[ "$line" == "mute" ]]; then
+            mute
+        elif [[ "$line" == "wifi" ]]; then
+            wifi.sh &
+        fi
+    done
+}
 bar() {
-    local BAR_WIDTH=196
+    local BAR_WIDTH=198
     while true; do
-        local left_content=" %{F#ebdbb2}$(format_desktops)%{F#928374}$(displayUnameOrMedia)"
+        local left_content="  %{F#ebdbb2}$(format_desktops)%{F#928374}$(displayUnameOrMedia)"
         local center_content="%{A:clock:}%{F#ebdbb2}$(Clock)%{A}%{F-}"
         local right_content="%{A:wifi:}%{F#83a598}[$(Wifi)]%{A}\
 %{A1:vol:}%{A2:mute:}[$(Sound)]%{A}%{A}\
@@ -202,7 +226,7 @@ bar() {
         local padding_left=$(printf "%*s" $(expr \( $BAR_WIDTH - $center_raw \) / 2 - $left_raw + 5))
         local padding_right=$(printf "%*s" $(expr $BAR_WIDTH - $right_raw - \( $BAR_WIDTH - \( $BAR_WIDTH - $center_raw \) / 2 \) ))
         echo -e "$left_content$padding_left$center_content$padding_right$right_content"
-        sleep 1s
-    done | lemonbar -B "#282828" -F "#ebdbb2" -f "FiraCode Nerd Font" -f "Noto Sans CJK JP" -p -g x30++
+        sleep 0.2s
+    done | lemonbar -B "#282828" -F "#ebdbb2" -f "FiraCode Nerd Font" -f "Noto Serif CJK KR" -f "Noto Serif CJK TC" -f "Noto Serif CJK SC"  -f "Noto Serif CJK JP" -f "Noto Serif CJK HK"  -p -g x30++ | manage
 }
 bar

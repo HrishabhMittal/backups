@@ -10,8 +10,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 awful.spawn.with_shell("clipman &")
 awful.spawn.with_shell("picom &")
-awful.spawn.with_shell("$(killall lemonbar &) && /home/hrishabhmittal/.config/awesome/lemonbar.sh &")
-awful.spawn.with_shell("$(killall batteryd &) && /home/hrishabhmittal/.config/awesome/batteryd &")
+awful.spawn.with_shell("$(killall lemonbar &) && /home/hrishabh/.config/awesome/lemonbar.sh &")
+awful.spawn.with_shell("$(killall batteryd &) && /home/hrishabh/.config/awesome/batteryd &")
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
@@ -28,8 +28,8 @@ do
         in_error = false
     end)
 end
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/beautiful.lua")
-terminal = "alacritty"
+beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
@@ -166,12 +166,12 @@ globalkeys = gears.table.join(
 
 )
 clientkeys = gears.table.join(
-    awful.key({                  }, "f11",
-        function (c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        {description = "toggle fullscreen", group = "client"}),
+     awful.key({                  }, "f11",
+         function (c)
+             c.fullscreen = not c.fullscreen
+             c:raise()
+         end,
+         {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey,           }, "a",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  function (c)
@@ -273,7 +273,7 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 awful.rules.rules = {
     { rule = { },
-      properties = { border_width = beautiful.border_width,
+      properties = { border_width = 0,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
@@ -357,8 +357,6 @@ end)
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 client.connect_signal("manage", function (c)
     if c.class == "Yad" then
         gears.timer.start_new(0.01, function()
@@ -369,8 +367,8 @@ client.connect_signal("manage", function (c)
         end)
     end
 end)
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+-- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.useless_gap = 5
 local math = require("math")
@@ -382,9 +380,8 @@ local function get_wallpapers(wallpaper_dir)
     return wallpapers
 end
 
--- gears.wallpaper.maximized("/home/hrishabhmittal/Pictures/gruvbox/anime_skull.png")
 local function set_random_wallpaper()
-    local wallpaper_dir = "/home/hrishabhmittal/Pictures/gruvbox"
+    local wallpaper_dir = "/home/hrishabh/Pictures/gruvbox"
     local wallpapers = get_wallpapers(wallpaper_dir)
     if #wallpapers > 0 then
         local random_wallpaper = wallpapers[math.random(#wallpapers)]

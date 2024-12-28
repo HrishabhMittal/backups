@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Temporary files to track alerts
 low_battery_alert_file="/tmp/battery_low_alert.shown.inawesome"

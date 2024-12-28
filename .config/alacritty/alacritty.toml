@@ -8,8 +8,8 @@
 #]
 
 [terminal.shell]
-program               = "/usr/bin/bash"
-args                  = [ "--login", ]
+program               = "/usr/bin/env"
+args                  = [ "bash", ]
 
 #working_directory     = "None"
 #live_config_reload    = true

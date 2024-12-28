@@ -1,0 +1,23 @@
+2024-12-25 16:21:30 Loading main app package /nix/store/qmsigfyalzx4797bxw0j70sa4qdcband-obsidian-1.7.6/share/obsidian/obsidian.asar
+2024-12-25 16:21:31 Checking for update using Github
+2024-12-25 16:21:31 Success.
+2024-12-25 16:21:31 Latest version is 1.7.7
+2024-12-25 16:21:31 Downloading update from https://github.com/obsidianmd/obsidian-releases/releases/download/v1.7.7/obsidian-1.7.7.asar.gz
+2024-12-25 16:21:33 Verifying hash & signature. Size= 8000009
+2024-12-25 16:21:33 Saving file
+2024-12-25 16:21:34 Update complete.
+2024-12-25 16:23:32 Loading updated app package /home/hrishabh/.config/obsidian/obsidian-1.7.7.asar
+2024-12-25 16:23:32 Checking for update using Github
+2024-12-25 16:23:32 Success.
+2024-12-25 16:23:32 Latest version is 1.7.7
+2024-12-25 16:23:32 App is up to date.
+2024-12-25 16:23:48 Loading updated app package /home/hrishabh/.config/obsidian/obsidian-1.7.7.asar
+2024-12-25 16:23:49 Checking for update using Github
+2024-12-25 16:23:49 Success.
+2024-12-25 16:23:49 Latest version is 1.7.7
+2024-12-25 16:23:49 App is up to date.
+2024-12-25 16:24:13 Loading updated app package /home/hrishabh/.config/obsidian/obsidian-1.7.7.asar
+2024-12-25 16:24:13 Checking for update using Github
+2024-12-25 16:24:13 Success.
+2024-12-25 16:24:13 Latest version is 1.7.7
+2024-12-25 16:24:13 App is up to date.

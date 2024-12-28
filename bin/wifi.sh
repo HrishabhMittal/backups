@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 turn_on_wifi() {
     nmcli radio wifi on
     echo "🔌 Wi-Fi turned on"
